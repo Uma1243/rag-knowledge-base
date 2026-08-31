@@ -30,3 +30,5 @@ env/
 .vscode/
 .DS_Store
 Thumbs.db
+# Streamlit runtime (keep config.toml tracked; ignore secrets)
+.streamlit/secrets.toml

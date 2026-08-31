@@ -19,6 +19,8 @@ dependencies = [
 # Real semantic embeddings (downloads a small model on first use). Optional so tests/CI
 # can run with the built-in hashing embedder and no heavy dependencies.
 embeddings = ["sentence-transformers>=2.6.0"]
+# The Streamlit chatbot UI.
+app = ["streamlit>=1.36.0"]
 dev = ["pytest>=8.0.0"]
 
 [project.scripts]

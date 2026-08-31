@@ -13,6 +13,23 @@ documentation of a fictional company, *Meridian Data Co.* — using a fictional 
 deliberate: the LLM couldn't have memorized any of it, so a correct answer **proves retrieval
 is doing the work**, not the model guessing from training.
 
+It ships with both a **command-line interface** and a **Streamlit chatbot UI** — the same RAG
+engine behind both.
+
+## 💬 The chatbot (Meridian Assistant)
+
+```bash
+pip install -e ".[app,embeddings]"
+streamlit run app/streamlit_app.py
+```
+
+A chat interface where you ask Meridian questions and get grounded, cited answers. It has a
+**Mock ↔ Real toggle** in the sidebar, so it runs even without an API key (mock mode shows the
+top retrieved passage; real mode calls Claude). Sample questions, a top-k slider, a "show
+retrieved passages" view, and the list of source documents live in the sidebar. Ask something
+the docs don't cover (e.g. *"What is Meridian's revenue?"*) and it honestly replies that it
+doesn't have that information — the anti-hallucination guardrail, visible in the UI.
+
 ```
 $ python -m rag_kb ask "How long is bronze layer data kept before it's deleted?"
 
@@ -146,13 +163,17 @@ All tests are offline (hashing embedder, no API key, no model download) and run 
 ```
 rag-knowledge-base/
 ├── knowledge_base/          # 7 source documents (the corpus)
+├── app/
+│   └── streamlit_app.py     # 💬 the chatbot UI (thin layer over rag_kb)
 ├── src/rag_kb/
 │   ├── config.py            # all tunables: chunk size, top_k, model names
 │   ├── loader.py chunker.py embeddings.py vector_store.py
 │   ├── indexer.py retriever.py generator.py pipeline.py evaluate.py
+│   ├── app_support.py       # helpers the UI uses (auto-index, key detection)
 │   └── cli.py __main__.py   # `index` / `ask` / `eval`
 ├── eval/eval_set.json       # questions + expected source docs
 ├── tests/test_rag.py        # offline unit tests
+├── .streamlit/config.toml   # UI theme
 ├── .github/workflows/ci.yml
 └── pyproject.toml requirements.txt LICENSE .gitignore .env.example
 ```
@@ -186,3 +207,6 @@ rag-knowledge-base/
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## SCREENSHOT OF APP
+![alt text](image.png)
