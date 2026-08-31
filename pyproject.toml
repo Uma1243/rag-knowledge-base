@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-knowledge-base"
+version = "0.1.0"
+description = "A small but real Retrieval-Augmented Generation system over a document knowledge base, with a pure-Python vector store, local embeddings, citations, and evaluation."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+dependencies = [
+    "numpy>=1.24",
+    "anthropic>=0.40.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+# Real semantic embeddings (downloads a small model on first use). Optional so tests/CI
+# can run with the built-in hashing embedder and no heavy dependencies.
+embeddings = ["sentence-transformers>=2.6.0"]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+rag-kb = "rag_kb.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

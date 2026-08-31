@@ -1,0 +1,55 @@
+{
+  "description": "Evaluation set for the Meridian RAG system. Each item has a question and the source document(s) that contain the answer. Retrieval is scored on whether an expected source appears in the top-k retrieved chunks.",
+  "questions": [
+    {
+      "question": "How long is bronze layer raw data retained before it is deleted?",
+      "expected_sources": ["03_data_retention_policy.md"],
+      "answer_contains": ["13 month"]
+    },
+    {
+      "question": "What is the target end-to-end latency for streaming ingestion for Pulse Enterprise customers?",
+      "expected_sources": ["02_platform_architecture.md"],
+      "answer_contains": ["30 second"]
+    },
+    {
+      "question": "What are the response time targets for a SEV1 incident?",
+      "expected_sources": ["04_incident_runbook.md"],
+      "answer_contains": ["5 minute", "1 hour", "4 hour"]
+    },
+    {
+      "question": "How does a new engineer get access to production data?",
+      "expected_sources": ["05_onboarding_guide.md"],
+      "answer_contains": ["training", "manager"]
+    },
+    {
+      "question": "Where are secrets stored and how are they referenced by pipelines?",
+      "expected_sources": ["06_security_and_access.md"],
+      "answer_contains": ["Secret Manager"]
+    },
+    {
+      "question": "What does it mean for a pipeline to be idempotent at Meridian?",
+      "expected_sources": ["07_pipeline_standards.md"],
+      "answer_contains": ["same result", "duplicate"]
+    },
+    {
+      "question": "Within how many days must a customer data erasure request be completed?",
+      "expected_sources": ["03_data_retention_policy.md"],
+      "answer_contains": ["30 day"]
+    },
+    {
+      "question": "What cloud does Meridian primarily run on and what is the primary region?",
+      "expected_sources": ["01_company_overview.md", "02_platform_architecture.md"],
+      "answer_contains": ["Google Cloud", "asia-south1"]
+    },
+    {
+      "question": "What is the medallion architecture and what are its layers?",
+      "expected_sources": ["02_platform_architecture.md"],
+      "answer_contains": ["bronze", "silver", "gold"]
+    },
+    {
+      "question": "How is PII handled at ingestion?",
+      "expected_sources": ["03_data_retention_policy.md", "06_security_and_access.md"],
+      "answer_contains": ["token"]
+    }
+  ]
+}

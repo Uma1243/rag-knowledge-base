@@ -1,0 +1,11 @@
+# Core (always needed)
+numpy>=1.24
+anthropic>=0.40.0
+python-dotenv>=1.0.0
+
+# Real semantic embeddings (recommended). Downloads a ~80MB model on first use.
+# Omit if you only want to run tests/eval with the built-in hashing embedder.
+sentence-transformers>=2.6.0
+
+# Dev
+pytest>=8.0.0

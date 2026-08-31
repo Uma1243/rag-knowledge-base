@@ -1,0 +1,32 @@
+# Secrets
+.env
+*.env
+!.env.example
+
+# Generated vector index (rebuild with `python -m rag_kb index`)
+index/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Model / HF cache if it lands locally
+.cache/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
